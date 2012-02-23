@@ -1,0 +1,14 @@
+<p><%= @user.name %>,</p>
+
+
+<p>You have been invited to a party!</p>
+
+<p>From: <%= @host.first_name %> <%= @host.last_name %></p>
+<p>Name: <%= @party.name %></p>
+<p>Date: <%= @party.date.strftime("%B %d, %Y") %></p>
+<p><%= @party.description %></p>
+<p>Your invite code is <%= @code %>.</p>
+
+<p>Please use it to log in to our site and RSVP by <%= @party.rsvp_date %></p><p>
+Thanks!</p>
+

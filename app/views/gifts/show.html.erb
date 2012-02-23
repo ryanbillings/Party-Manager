@@ -1,0 +1,27 @@
+<% title "Gift" %>
+
+<p>
+  <strong>Invitation:</strong>
+  <%= Guest.find(Invitation.find(@gift.invitation_id).guest_id).name %> -
+  <%= Party.find(Invitation.find(@gift.invitation_id).party_id).name %>
+</p>
+<p>
+  <strong>Note Sent On:</strong>
+  <% if @gift.note_sent_on.nil? %>
+  *<cite>Not yet sent</cite>*
+  <% else %>
+  <%= @gift.note_sent_on %>
+  <% end %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @gift.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_gift_path(@gift) %> |
+  <%= link_to "Destroy", @gift, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", gifts_path %> |
+ <%= link_to "Send Thank You Note", { :controller=>"gifts", :action=>:send_gift, :g => @gift.id }, :target => "_blank" %>
+</p>
+

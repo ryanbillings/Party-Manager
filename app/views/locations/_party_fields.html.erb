@@ -1,0 +1,40 @@
+<div style="background-color:#E7F3FC;">
+<p>
+    <%= f.label :party_type_id %><br />
+    <%= f.collection_select :party_type_id, PartyType.active.all, :id, :name, :prompt => "Select ..."  %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :date %><br />
+     <%= f.text_field :date, :class => "datepicker" %>
+  </p>
+  <p>
+    <%= f.label :start_time %><br />	
+    <%= f.time_select :start_time, :twelve_hour => true%>
+  </p>
+  <p>
+    <%= f.label :end_time %><br />
+    <%= f.time_select :end_time %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :rsvp_date %><br />
+     <%= f.text_field :rsvp_date, :class => "datepicker" %>
+  </p>
+  <p>
+    <%= f.label :public %><br/>
+	<%= f.check_box :public %>
+  </p>
+  <p>
+  <%= f.hidden_field :host_id, :value => current_host.id %>
+  </p>
+  <p>
+  <%= f.hidden_field :location_id, :value => @location.id %>
+  </p>
+ </div> 

@@ -1,0 +1,32 @@
+<% title "Gifts" %>
+
+<table class="datagrid">
+  <tr>
+  <thead class="datagrid">
+    <th>Invitation</th>
+    <th>Note Sent On</th></thead>
+  </tr>
+  <% unless @gifts.empty? %>
+  <% for gift in @gifts %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%= Guest.find(Invitation.find(gift.invitation_id).guest_id).name %> - 
+	  <%= Party.find(Invitation.find(gift.invitation_id).party_id).name%> </td>
+      <% if !gift.note_sent_on.nil? %>
+	  <td><%= gift.note_sent_on.strftime("%m/%d/%y") %></td>
+	  <% else %>
+	  <td>--</td>
+	  <% end %>
+      <td><%= link_to "Show", gift %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_gift_path(gift))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), gift, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+  <% end %>
+</table>
+<%= will_paginate @gifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<p><%= link_to "New Gift", new_gift_path(gift) %></p><br/><br/>
+<p style="font-size: 10pt;"><cite>* A '--' indicates that you haven't sent an electronic thank-you note through our system. If you have sent the mail manually and would like to
+record it in the system, please edit the gift and select the date that you sent the note on. If you would like to send an email,
+click on the gift then click the link 'Send Thank You Note'.</cite></p>

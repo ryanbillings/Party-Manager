@@ -1,0 +1,153 @@
+body {
+  background-image:url('/images/background.jpg');
+  background-size: 100%;
+  background-repeat: repeat;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
+}
+#map_canvas { 
+	vertical-align: top;
+	float: right;
+	height: 300px; 
+	width: 300px;
+	border: 3px double black;
+}
+a img {
+  border: none;
+}
+
+a {
+  color: #0000FF;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: 800px;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px;
+  
+}
+
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+.error_messages p {
+  margin: 8px 10px;
+}
+
+.error_messages ul {
+  margin: 0;
+}
+
+
+
+#header {
+	/*background:url(/images/layout/PATS_logo2_900.jpg) no-repeat top left;*/
+	height:100px;
+}
+
+
+
+
+
+
+/********** MAIN NAV ********/
+
+
+#nav ul {
+   width: 800px;
+   text-align: center;
+   padding: 5px;
+   background-color: #ececec;
+   border: 1px solid #ccc;
+   margin-bottom: 20px;
+}
+
+#nav li { 
+	 display: inline;
+   padding-left: 5px;
+}
+/*
+#nav a { 
+	padding:0 10px 0 10px;
+	display:block;
+	height:100%;
+	color: #41779E;
+	background-color: #CFEBFF;
+	vertical-align: middle;
+}
+*/
+/********** TABLE FORMATTING ********/
+
+.tblborder {
+	border-right-width:0px;
+    border-right-color:black;
+    border-right-style:solid;
+	border-left-width:0px;
+    border-left-color:black;
+    border-left-style:solid;
+	border-top-width:0px;
+    border-top-color:black;
+    border-top-style:solid;
+	border-bottom-width:0px;
+    border-bottom-color:black;
+    border-bottom-style:solid;
+}
+
+.trow {
+	font-weight: bold;
+	color: #ffffff;
+	background-color: #666;
+	height: 28px;
+}
+
+.quizrow {
+	vertical-align: top;
+	line-height: 12px;
+}
+
+

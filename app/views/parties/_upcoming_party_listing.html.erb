@@ -1,0 +1,23 @@
+<table class = "datagrid">
+  <thead class = "datagrid">
+    <th>Party Type</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Date</th>
+	<th>Time</th>
+    <th>Rsvp Date</th></thead>
+  
+<% for party in @parties_upcoming %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to party.name, party_path(party.id) %></td>
+	  <td><%= PartyType.find(party.party_type_id).name %></td>
+      <td><%= link_to Location.find(party.location_id).name, location_path(party.location_id) %></td>
+      <td><%= party.date.strftime("%m/%d/%y") %></td>
+      <td><%= party.time %></td>
+      <td><%= party.rsvp_date.strftime("%m/%d/%y") %></td>
+	   <td align="center"><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_party_path(party))  %>&nbsp;
+	  <%= link_to(image_tag("icons/delete_dg.gif", :border => 0), party, :confirm => 'Are you sure?', :method => :delete)%></td>
+    </td></tr>
+  <% end %>
+</table>
+<%= will_paginate @parties_upcoming, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>

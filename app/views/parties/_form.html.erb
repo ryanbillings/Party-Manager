@@ -1,0 +1,43 @@
+<%= form_for @party do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :party_type_id %><br />
+    <%= f.collection_select :party_type_id, PartyType.active.all, :id, :name, :prompt => "Select ..."  %>
+  </p>
+   <p>New type? <%= link_to "click here to add a party type", new_party_type_path %></p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :location_id %><br />
+    <%= f.collection_select :location_id, Location.for_host(current_host).all, :id, :name, :prompt => "Select ..." %>
+  </p>
+  <p>New location? <%= link_to "click here to add the details", new_location_path %></p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.text_field :date, :class => "datepicker" %>
+  </p>
+  <p>
+    <%= f.label :start_time %><br />	
+    <%= f.time_select :start_time, :twelve_hour => true%>
+  </p>
+  <p>
+    <%= f.label :end_time %><br />
+    <%= f.time_select :end_time %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :rsvp_date %><br />
+    <%= f.text_field :rsvp_date, :class => "datepicker" %>
+  </p>
+  <p>
+    <%= f.label :public %><br/>
+	<%= f.check_box :public %>
+  </p>
+  <p>
+  <%= f.submit %></p>
+<% end %>

@@ -1,0 +1,24 @@
+<% title "Party Types" %>
+
+<table class="datagrid">
+  <tr>
+  <thead class="datagrid">
+    <th>Name</th>
+    <th>Active</th></thead>
+  </tr>
+  <% for party in Party.for_host(@current_host) %>
+  <% for party_type in PartyType.for_party(party.id) %>
+    <tr>
+     <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%=link_to party_type.name, party_type_path(party_type.id) %></td>
+      <td><%= party_type.active %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_party_type_path(party_type))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), party_type, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+  <% end %>
+</table>
+
+<p><%= link_to "New Party Type", new_party_type_path(party_type) %></p>

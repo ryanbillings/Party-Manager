@@ -1,0 +1,37 @@
+This is the Phase 4 Party Manager project by Ryan Billings for 67-272 Application Design & Development.
+
+This project is for the morning section and has different requirements than the afternoon section.
+
+Functionalities:
+	-A user can create a party, guest, invitation, gift, party type and location. Basic CRUD operations apply here.
+	
+	-This app supports admin functionalities. If you would like to make an admin account, open up the development database
+	and run the following command: "UPDATE hosts SET role='admin' WHERE id = #;" (# is the host id to be the admin)
+	
+	-An admin has access to an index page of all the hosts (located at the All Accounts link on the nav bar). If an admin
+	deletes a host account, it will email all guests with incoming party invitations for the account notifying them of the incident.
+	
+	-This application will send emails in the following situations:
+		1) An invitation is sent to a guest
+		2) Password reset is clicked at the homepage (provided an email)
+		3) A host deletes a party (email to all guests with upcoming invitations)
+		4) An admin deletes a host account
+		5) A user clicks "send thank you note", on a gift
+		
+	-If a host sets a party to "Public", a user that will RSVP may see the guest list for that party. Otherwise,
+	the guest will see the map for the party and not the guest list.
+	
+	-Locations use javascript google maps.
+	
+	-Different party types have different backgrounds (this uses CSS3, so it might not work for Firefox 3)
+	
+	-Unit tests implemented.
+	
+	-Uses jQuery datepicker for the dates.
+	
+	-The validates timeliness gem and the jQuery datepicker don't like each other =)...the user must set the dates correctly using the
+	javscript calendar (I think?)
+
+Credit goes to Professor Heimann for the datagrid stylesheet (for tables).
+
+Enjoy! :-)

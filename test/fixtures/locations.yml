@@ -1,0 +1,19 @@
+one:
+  host_id: 1
+  name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  latitude: 1.5
+  longitude: 1.5
+
+two:
+  host_id: 1
+  name: MyString
+  street: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  latitude: 1.5
+  longitude: 1.5

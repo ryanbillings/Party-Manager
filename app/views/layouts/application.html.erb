@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Party Manager" %></title>
+    <%= stylesheet_link_tag "application", "datagrid", "text", 'calendar/red/style', 'themes/base/jquery.ui.all' %>
+    <%= javascript_include_tag 'jquery.min', 'jquery-ui.min', 'rails', 'application', 'nested_form', 'autocomplete-rails' %>
+	<%= csrf_meta_tag %>
+	 <%= yield :head %>
+  </head>
+  <body>
+    <div id="container">
+	<div id="wrap">
+    	<div id="header">
+		<%= image_tag 'banner3.png' %><br/>
+		<table border="0">
+				<tr>
+					<td>
+						<% if logged_in? %>
+						<div style="text-align:right">Welcome, <%= current_host.first_name %>
+						<% if current_host.role == 'admin'%>
+						&nbsp;(Admin)
+						<% end %>
+						</div><div style = "float:right">
+						<%= form_tag searches_path, :method => 'get' do %>
+						  <p>
+						  <%= text_field_tag :search %>
+						  <%= submit_tag "Search", :name => nil %>
+						  </p>
+						<% end %>
+						</div><br/><br/>
+						<center><%= render :partial => 'partials/side_nav' %></center><%end%>
+					</td>
+				</tr>
+	</table>
+		</div>
+      <% flash.each do |name, msg| %><br/><div style = "margin-top:23px; width:500px;">
+        <%= content_tag :div, msg, :id => "flash_#{name}" %></div>
+      <% end %>
+	  <% if logged_in? %>
+	  <br/><br/><br/><br/><br/><br/><br/>
+	  <% end %>
+      <%= content_tag :h1, yield(:title) if show_title? %>
+      <%= yield %>
+	  <br/><br/>
+    </div>
+	<%= render :partial => "partials/footer" %>
+  </body>
+</html>

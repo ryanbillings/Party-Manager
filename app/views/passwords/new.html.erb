@@ -1,0 +1,10 @@
+<% title "Reset" %>
+
+
+<%= form_tag passwords_path do %>
+  <p>
+    <%= label_tag :reset, "Email" %><br />
+    <%= text_field_tag :reset, params[:reset] %>
+  </p>
+  <p><%= submit_tag "Reset" %></p>
+<% end %>

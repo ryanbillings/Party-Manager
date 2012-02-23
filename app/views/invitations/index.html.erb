@@ -1,0 +1,28 @@
+<% title "Invitations" %>
+
+<table class="datagrid">
+  <tr>
+  <thead class="datagrid">
+    <th>Invite Code</th>
+    <th>Party</th>
+    <th>Guest</th>
+
+    <th>Expected Attendees</th>
+    <th>Actual Attendees</th></thead>
+  </tr>
+  <% for invitation in @invitations %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+	<td><%= link_to invitation.invite_code, invitation %></td>
+      <td><%= link_to Party.find(invitation.party_id).name, party_path(Party.find(invitation.party_id)) %></td>
+      <td><%= link_to Guest.find(invitation.guest_id).name, guest_path(Guest.find(invitation.guest_id)) %></td>      
+      <td><%= invitation.expected_attendees %></td>
+      <td><%= invitation.actual_attendees %></td>
+       <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_invitation_path(invitation))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), invitation, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @invitations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<p><%= link_to "New Invitation", new_invitation_path(invitation) %></p>

@@ -1,0 +1,23 @@
+<div id="side_nav">
+	<div id="nav">
+	<ul>
+	<!-- OPTIONS FOR EVERYONE -->
+		<li><%= link_to 'My Parties', parties_path %></li>
+		<li><%= link_to 'My Guests', guests_path %></li>
+		<li><%= link_to 'My Gifts', gifts_path %></li>
+		<li><%= link_to 'Send Invitations', invitations_path %></li>
+		<li><%= link_to 'My Locations', locations_path %></li>
+		<li><%= link_to 'My Account', edit_host_path(current_host.id) %></li>
+		<% if current_host.role == 'admin' %>
+		<li><%= link_to 'All Accounts', hosts_path %></li>
+		<% end %>
+		</li>
+		<!-- can set this manually, or just use the named route 'logout' -->
+		<li>
+			<%# link_to 'Logout', { :controller => :sessions, :action => :destroy } %>
+			<%= link_to 'Logout', logout_path %>
+		</li>
+	</ul>
+	</div>
+	<p>&nbsp;</p>
+</div> <!-- end of side_nav div -->

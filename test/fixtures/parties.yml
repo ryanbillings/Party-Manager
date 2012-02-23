@@ -1,0 +1,21 @@
+one:
+  party_type_id: 1
+  host_id: 1
+  name: MyString
+  location_id: 1
+  date: 2011-02-11
+  start_time: 2011-02-11 13:46:14
+  end_time: 2011-02-11 13:46:14
+  description: MyText
+  rsvp_date: 2011-02-11
+
+two:
+  party_type_id: 1
+  host_id: 1
+  name: MyString
+  location_id: 1
+  date: 2011-02-11
+  start_time: 2011-02-11 13:46:14
+  end_time: 2011-02-11 13:46:14
+  description: MyText
+  rsvp_date: 2011-02-11

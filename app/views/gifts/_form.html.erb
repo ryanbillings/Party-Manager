@@ -1,0 +1,38 @@
+<%= form_for @gift do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :invitation_id %><br />
+    <%= f.collection_select :invitation_id, @invitation_hash.sort, :second, :first%>
+  </p>
+  <%if false%>
+  <table class="datagrid">
+  <tr>
+  <thead class="datagrid">
+    <th>Invitation Code</th>
+    <th>Guest</th>
+	<th>Party</th></thead>
+  </tr>
+	
+  <% unless Invitation.for_host(current_host).all.empty? %>
+  <% invitations=Invitation.for_host(current_host).all.paginate :page => params[:page], :per_page => 5 %>
+  <% for i in invitations %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%= i.invite_code %></td>
+      <td><%= Guest.find(i.guest_id).name %></td>
+	  <td><%= Party.find(i.party_id).name %></td>
+    </tr>
+  <% end %>
+  <% end %>
+  <%= will_paginate invitations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  <% end %>
+  </table>
+  <% if !@gift.id.nil? %>
+  <%= f.label :note_sent_on %><br />
+  <%= f.date_select :note_sent_on %>
+  <% end %>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,7 @@
+<p>
+	<% for party_type in PartyType.all  %>
+	   <%= select_tag party_type.id%>
+		 <%= party_type.name %>
+	   <br />
+	<% end  %>
+</p>

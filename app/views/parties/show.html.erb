@@ -1,0 +1,59 @@
+<% title "Party" %>
+<% if @party_type.name == "Graduation" %>
+ <%= stylesheet_link_tag "grad" %>
+<% elsif @party_type.name == "Birthday" %>
+ <%= stylesheet_link_tag "birthday" %>
+<% elsif @party_type.name == "Baby Shower" %>
+ <%= stylesheet_link_tag "baby" %>
+<% end %>
+<p>
+  <strong>Party Type:</strong>
+  <%= @party_type.name %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @party.name %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%= link_to @location.name, location_path(@location.id) %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @party.date.strftime("%m/%d/%y") %>
+</p>
+<p>
+  <strong>Start Time:</strong>
+  <%= @party.start_time.strftime("%I:%M%p") %>
+</p>
+<p>
+  <strong>End Time:</strong>
+  <%= @party.end_time.strftime("%I:%M%p") %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @party.description %>
+</p>
+<p>
+  <strong>Rsvp Date:</strong>
+  <%= @party.rsvp_date.strftime("%m/%d/%y") %>
+</p>
+<table style="float:right; margin-top: -345px">
+<td width="10">&nbsp;</td>
+		<td width="250">
+			<% unless @invitations.empty? %>
+			<h2>Current Guests:</h2>
+			  <%= render :partial => "current_guests" %>
+			  <p class="supertiny">&nbsp;</p>
+			<% end %>
+		</td>
+		<td>
+		<p> Total Expected: <%= @sum1 %></p>
+		<p> Total Confirmed: <%= @sum2 %></p>
+		</td>
+</table>
+<p>
+  <%= link_to "Edit", edit_party_path(@party) %> |
+  <%= link_to "Destroy", @party, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", parties_path %>
+</p>

@@ -1,0 +1,27 @@
+<% title "Hosts" %>
+
+<table class="datagrid">
+  <tr>
+	<thead class= "datagrid">
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Username</th>
+ </th>
+  </tr>
+  <% for host in @hosts %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%= host.first_name %></td>
+      <td><%= host.last_name %></td>
+      <td><%= host.email %></td>
+      <td><%= host.username %></td>
+      <td><%= link_to "Show", host %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_host_path(host))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), host, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @hosts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<p><%= link_to "New Host", new_host_path(host) %></p>

@@ -1,0 +1,28 @@
+<% @location = Location.find(@invitation.party.location_id) %>
+<% content_for :head do %>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true" %>
+	<%= javascript_tag do %>
+		function create_map() {
+			var latlng = new google.maps.LatLng(<%= @location.latitude %>,<%= @location.longitude %>);
+			var myOptions = {
+				zoom:  10,
+				center: latlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+			marker = new google.maps.Marker({
+				map:map,
+				draggable:false,
+				animation: google.maps.Animation.DROP,
+				position: latlng
+				<% if @location.name %>
+					,title:"<%= @location.name %>"
+				<% end %>
+			});
+		}
+	<% end %>
+<% end %>
+
+<h5> Address - <%= @location.address %></h5>
+<div id="map_canvas" style="float:none;"></div>

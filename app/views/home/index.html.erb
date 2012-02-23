@@ -1,0 +1,13 @@
+<h1>Welcome to Party Manager!</h1>
+
+<p><%= image_tag 'balloons.jpg' %> <br/>This party manager application
+	will allow you to plan a party. Whether it is a birthday party, graduation party,
+	baby shower or a different type of event, this application can set it up for you!
+</p>
+<% unless current_host %>
+	<p>If you are a user, <%= link_to "click here to login.", login_path %></p>
+	<p>If you are a guest,
+	<%= link_to "click here to RSVP.", encode_path %></p>
+	<p>If you would like to sign up,
+	<%= link_to "click here to sign up.", signup_path %></p>
+<% end %>

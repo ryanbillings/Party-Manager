@@ -1,0 +1,13 @@
+<div style="background-color:#E7F3FC;">
+<p>
+	<%= f.label :party_id %><br />
+    <%= f.collection_select :party_id, Party.for_host(current_host).all, :id, :name, :prompt => "Select ..."  %>
+ </p>
+  <p>
+    <%= f.label :expected_attendees %><br />
+    <%= f.text_field :expected_attendees %>
+  </p>
+  <p>
+    <%= f.hidden_field :host_id, :value => current_host.id %>
+	<%= f.hidden_field :invite_code, :value => Invitation.new_invite_code %>
+  </div>

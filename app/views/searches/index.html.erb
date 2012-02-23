@@ -1,0 +1,85 @@
+<% if @parties.empty? == false %>
+<h1>Parties</h1>
+<table class = "datagrid">
+  <thead class = "datagrid">
+    <th>Party Type</th>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Date</th>
+	<th>Time</th>
+    <th>Rsvp Date</th></thead>
+  
+<% for party in @parties %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= link_to party.name, party_path(party.id) %></td>
+	  <td><%= PartyType.find(party.party_type_id).name %></td>
+      <td><%= link_to Location.find(party.location_id).name, location_path(party.location_id) %></td>
+      <td><%= party.date.strftime("%m/%d/%y") %></td>
+      <td><%= party.time %></td>
+      <td><%= party.rsvp_date.strftime("%m/%d/%y") %></td>
+	   <td align="center"><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_party_path(party))  %>&nbsp;
+	  <%= link_to(image_tag("icons/delete_dg.gif", :border => 0), party, :confirm => 'Are you sure?', :method => :delete)%></td>
+    </td></tr>
+  <% end %>
+</table>
+<%= will_paginate @parties, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<% end %>
+<br/>
+<% if @guests.empty? == false %>
+<h1>Guests</h1>
+
+<table class="datagrid">
+  <tr>
+	<thead class= "datagrid">
+    <th>Name</th>
+    <th>Email</th>
+	</th>
+  </tr>
+  <% for guest in @guests %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%= link_to guest.name, guest_path(guest.id) %></td>
+      <td><%= guest.email %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_guest_path(guest))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), guest, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @guests, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<% end %>
+<br/>
+
+<% if @locations.empty? == false %>
+<h1>Locations</h1>
+
+<table class="datagrid">
+  <tr>
+  <thead class="datagrid">
+    <th>Name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Latitude</th>
+    <th>Longitude</th></thead>
+  </tr>
+  <% for location in @locations %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%=link_to location.name, location_path(location.id) %></td>
+      <td><%= location.street %></td>
+      <td><%= location.city %></td>
+      <td><%= location.state %></td>
+      <td><%= location.zip %></td>
+      <td><%= location.latitude %></td>
+      <td><%= location.longitude %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_location_path(location))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), location, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+
+<% end %>

@@ -1,0 +1,33 @@
+<%= form_for @invitation do |f| %>
+  <%= f.error_messages %>
+  <p>
+	<% if current_host %>
+    <%= f.label :party_id %><br />
+    <%= f.collection_select :party_id, Party.for_host(current_host).all, :id, :name, :prompt => "Select ..."  %>
+  </p>
+  <p>
+    <%= f.label :guest_id %><br />
+    <%= f.collection_select :guest_id, Guest.for_host(current_host).all, :id, :name, :prompt => "Select ..."  %>
+  </p>
+  <p>
+    <%= f.label :expected_attendees %><br />
+    <%= f.text_field :expected_attendees %>
+  </p>
+  <p>
+	<% else %>
+	<h2><%= @invitation.party.name %></h2>
+	<%= render "location" %>
+	<% if @invitation.party.public %>
+	<h2>Guest list</h2>
+	<%= render "guest_list" %>
+	<br/>
+	<% end %>
+	<br/><br/>
+	Please enter the number of people that will be attending the party<br/><br/>
+	<b>Expected attendees: <span style = "color:red;"><%= @invitation.expected_attendees %></span></b><br/><br/>
+   <span style = "color:green;"> <%= f.label :actual_attendees %></span><br />
+    <%= f.text_field :actual_attendees %>
+  </p>
+  <% end %>
+  <p><%= f.submit %></p>
+<% end %>

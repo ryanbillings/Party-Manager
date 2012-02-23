@@ -1,0 +1,13 @@
+
+<h1>Upcoming Parties</h1>
+<p class="supertiny">&nbsp;</p>
+<%= render :partial => 'upcoming_party_listing' %>
+<p class="supertiny">&nbsp;</p>
+<p class="supertiny">&nbsp;</p>
+<h1>Previous Parties</h1>
+<p class="supertiny">&nbsp;</p>
+<%= render :partial => 'past_party_listing' %>
+<p class="supertiny">&nbsp;</p>
+
+<%= link_to 'Add a New Party', new_party_path %><br/><br/>
+<p style="font-size: 8pt;"><cite>*Note: If you delete a party, all guests with upcoming invitations will be emailed about the cancellation.</cite></p> 

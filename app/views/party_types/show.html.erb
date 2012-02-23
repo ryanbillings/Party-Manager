@@ -1,0 +1,16 @@
+<% title "Party Type" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @party_type.name %>
+</p>
+<p>
+  <strong>Active:</strong>
+  <%= @party_type.active %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_party_type_path(@party_type) %> |
+  <%= link_to "Destroy", @party_type, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", party_types_path %>
+</p>

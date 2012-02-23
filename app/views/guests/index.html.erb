@@ -1,0 +1,22 @@
+<% title "Guests" %>
+
+<table class="datagrid">
+  <tr>
+	<thead class= "datagrid">
+    <th>Name</th>
+    <th>Email</th>
+	</th>
+  </tr>
+  <% for guest in @guests %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%= link_to guest.name, guest_path(guest.id) %></td>
+      <td><%= guest.email %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_guest_path(guest))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), guest, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @guests, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<p><%= link_to "New Guest", new_guest_path(guest) %></p>

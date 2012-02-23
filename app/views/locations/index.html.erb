@@ -1,0 +1,31 @@
+<% title "Locations" %>
+
+<table class="datagrid">
+  <tr>
+  <thead class="datagrid">
+    <th>Name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Latitude</th>
+    <th>Longitude</th></thead>
+  </tr>
+  <% for location in @locations %>
+    <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+      <td><%=link_to location.name, location_path(location.id) %></td>
+      <td><%= location.street %></td>
+      <td><%= location.city %></td>
+      <td><%= location.state %></td>
+      <td><%= location.zip %></td>
+      <td><%= location.latitude %></td>
+      <td><%= location.longitude %></td>
+      <td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_location_path(location))  %>&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), location, :confirm => 'Are you sure you wish to delete this information?', :method => :delete) %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @locations, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<p><%= link_to "New Location", new_location_path(location) %></p>
